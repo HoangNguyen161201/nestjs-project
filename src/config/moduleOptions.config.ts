@@ -2,9 +2,10 @@ import { ConfigModuleOptions } from '@nestjs/config'
 import databaseConfig from './database.config'
 import jwtConfig from './jwt.config'
 import * as Joi from 'joi'
+import emailConfig from './email.config'
 
 const moduleOptions: ConfigModuleOptions = {
-    load: [databaseConfig, jwtConfig],
+    load: [databaseConfig, jwtConfig, emailConfig],
     isGlobal: true,
     cache: true,
     validationSchema: Joi.object({
@@ -18,6 +19,13 @@ const moduleOptions: ConfigModuleOptions = {
 
         EXPIRESIN_REFRESH: Joi.string().required().default('60s'),
         SECRET_REFRESH: Joi.string().required(),
+
+        MAIL_SERVICE: Joi.string().required(),
+        MAIL_USERNAME: Joi.string().required(),
+        MAIL_CLIENT_ID: Joi.string().required(),
+        MAIL_CLIENT_SECRET: Joi.string().required(),
+        MAIL_REFRESH_TOKEN: Joi.string().required(),
+        MAIL_REDIRECT_URI: Joi.string().required()
     }),
 }
 

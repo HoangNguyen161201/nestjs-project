@@ -8,12 +8,14 @@ import moduleOptions from './config/moduleOptions.config'
 import { typeOrmAsyncConfig } from './config/typeorm.config'
 import { AuthModule } from './modules/auth/auth.module'
 import { CategoryModule } from './modules/category/category.module'
+import { EmailModule } from './modules/email/email.module'
 import { ProductModule } from './modules/product/product.module'
 import { ProfileModule } from './modules/profile/profile.module'
 import { UserModule } from './modules/user/user.module'
 
 @Module({
     imports: [
+        ScheduleModule.forRoot(),
         ConfigModule.forRoot(moduleOptions),
         TypeOrmModule.forRootAsync(typeOrmAsyncConfig),
         UserModule,
@@ -21,7 +23,7 @@ import { UserModule } from './modules/user/user.module'
         ProfileModule,
         CategoryModule,
         ProductModule,
-        ScheduleModule.forRoot()
+        EmailModule
     ],
     controllers: [AppController],
     providers: [AppService],
