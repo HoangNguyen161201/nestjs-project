@@ -1,22 +1,26 @@
 import {
+    Body,
     Controller,
     Get,
-    Post,
-    Body,
-    Patch,
     Param,
-    Delete,
-    UseGuards,
-    Req,
-    Put,
     ParseIntPipe,
+    Post,
+    Put,
+    Req,
+    UseGuards,
 } from '@nestjs/common'
-import { ProfileService } from '../services/profile.service'
+import { Request } from 'express'
+import { ResponseMessage } from 'src/common/decorator/response.decorator'
+import { JwtAuthGuard } from 'src/modules/auth/guards/jwt-auth/jwt-auth.guard'
+import { User } from 'src/modules/user/entities/user.entity'
 import { CreateProfileDto } from '../dto/create-profile.dto'
 import { UpdateProfileDto } from '../dto/update-profile.dto'
-import { JwtAuthGuard } from 'src/modules/auth/guards/jwt-auth/jwt-auth.guard'
-import { Request } from 'express'
-import { User } from 'src/modules/user/entities/user.entity'
+import {
+    GET_PROFILE,
+    PROFILE_CREATED,
+    PROFILE_UPDATED,
+} from '../profile.constants'
+import { ProfileService } from '../services/profile.service'
 
 @Controller('profile')
 export class ProfileController {
@@ -24,25 +28,25 @@ export class ProfileController {
 
     @UseGuards(JwtAuthGuard)
     @Post()
-    async create(
-        @Body() createProfileDto: CreateProfileDto,
-        @Req() req: Request
-    ) {
+    @ResponseMessage(PROFILE_CREATED)
+    create(@Body() createProfileDto: CreateProfileDto, @Req() req: Request) {
         const user = req.user as User
-        return await this.profileService.create(createProfileDto, user)
+        return this.profileService.create(createProfileDto, user)
     }
 
     @UseGuards(JwtAuthGuard)
+    @ResponseMessage(GET_PROFILE)
     @Get(':id')
-    async findOne(@Param('id', ParseIntPipe) id: number) {
-        return await this.profileService.findOne(id)
+    findOne(@Param('id', ParseIntPipe) id: number) {
+        return this.profileService.findOne(id)
     }
 
     @Put(':id')
-    async update(
+    @ResponseMessage(PROFILE_UPDATED)
+    update(
         @Param('id', ParseIntPipe) id: number,
         @Body() updateProfileDto: UpdateProfileDto
     ) {
-        return await this.profileService.update(id, updateProfileDto)
+        return this.profileService.update(id, updateProfileDto)
     }
 }

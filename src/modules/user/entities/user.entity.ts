@@ -9,6 +9,7 @@ import {
     OneToOne,
     JoinColumn,
 } from 'typeorm'
+import { Exclude } from 'class-transformer'
 
 export enum UserRole {
     ADMIN = 'admin',
@@ -29,6 +30,7 @@ export class User {
 
     @Column()
     @IsString()
+    @Exclude()
     password: string
 
     @Column({

@@ -1,8 +1,4 @@
-import {
-  HttpException,
-  HttpStatus,
-  Injectable
-} from '@nestjs/common'
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common'
 import { InjectRepository } from '@nestjs/typeorm'
 import { CategoryService } from 'src/modules/category/services/category.service'
 
@@ -65,9 +61,6 @@ export class ProductService {
         if (!product)
             throw new HttpException('Product not found', HttpStatus.NOT_FOUND)
         await this.productRepository.delete({ id })
-        return {
-            message: 'Remove successfully',
-            status: HttpStatus.OK,
-        }
+        return ''
     }
 }

@@ -1,0 +1,5 @@
+export const GET_CATEGORY = 'Get category successfully'
+export const GET_CATEGORIES = 'Get all categories successfully'
+export const CATEGORY_UPDATED = 'category Updated'
+export const CATEGORY_DELETED = 'category Deleted'
+export const CATEGORY_CREATED = 'category created'

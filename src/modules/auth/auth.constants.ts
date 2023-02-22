@@ -1,4 +1,3 @@
-import { HttpStatus, ValidationPipe } from '@nestjs/common'
 
 const PASSWORD_RULE = /((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/
 
@@ -12,3 +11,8 @@ export const REGEX = {
 export const MESSAGES = {
     PASSWORD_RUDE_MESSAGE,
 }
+
+export const AUTH_LOGIN = 'Login successfully'
+export const AUTH_LOGOUT = 'Logout successfully'
+export const AUTH_REGISTER = 'Register successfully'
+export const AUTH_REFRESH = 'Refresh token successfully'

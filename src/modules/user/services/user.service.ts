@@ -1,11 +1,11 @@
-import { Injectable, HttpException, HttpStatus } from '@nestjs/common'
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common'
 import { InjectRepository } from '@nestjs/typeorm'
+import * as bcrypt from 'bcrypt'
 import { Repository } from 'typeorm'
 import { CreateUserDto } from '../dto/create-user.dto'
 import { User } from '../entities/user.entity'
-import * as bcrypt from 'bcrypt'
-import { UserUpdateFilter } from '../user.middleware'
 import { UserUpdOptions } from '../user.interface'
+import { UserUpdateFilter } from '../user.middleware'
 
 @Injectable()
 export class UserService {
@@ -26,9 +26,8 @@ export class UserService {
         return user
     }
 
-    async findOne(username: string) {
-        const user = await this.UserRepository.findOneBy({ username })
-        return user
+    findOne(username: string) {
+        return this.UserRepository.findOneBy({ username })
     }
 
     async update(filter: UserUpdateFilter, update: Partial<UserUpdOptions>) {

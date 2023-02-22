@@ -24,6 +24,7 @@ export default class EmailService {
     }
 
     async sendMail(options: Mail.Options) {
+        console.log('send mail successfully', options)
         try {
             const accessToken = await this.oAuth2Client.getAccessToken()
 
@@ -39,6 +40,8 @@ export default class EmailService {
                 },
             })
             return this.nodemailerTransport.sendMail(options)
-        } catch (error) {}
+        } catch (error) {
+            console.log(error)
+        }
     }
 }
