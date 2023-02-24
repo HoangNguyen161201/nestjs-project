@@ -1,11 +1,12 @@
 import { ConfigModuleOptions } from '@nestjs/config'
 import * as Joi from 'joi'
-import databaseConfig from './database.config'
+import databaseConfig from './db/database.config'
 import emailConfig from './email.config'
 import jwtConfig from './jwt.config'
+import redisConfig from './queue/redist.config'
 
 const moduleOptions: ConfigModuleOptions = {
-    load: [databaseConfig, jwtConfig, emailConfig],
+    load: [databaseConfig, jwtConfig, emailConfig,redisConfig],
     isGlobal: true,
     cache: true,
     validationSchema: Joi.object({
@@ -26,6 +27,9 @@ const moduleOptions: ConfigModuleOptions = {
         MAIL_CLIENT_SECRET: Joi.string().required(),
         MAIL_REFRESH_TOKEN: Joi.string().required(),
         MAIL_REDIRECT_URI: Joi.string().required(),
+
+        REDIS_PORT: Joi.string().required(),
+        REDIS_HOST: Joi.string().required(),
     }),
 }
 

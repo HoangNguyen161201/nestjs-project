@@ -37,7 +37,8 @@ export default class EmailService {
                     accessToken: `${accessToken}`,
                 },
             })
-            return this.nodemailerTransport.sendMail(options)
+            await this.nodemailerTransport.sendMail(options)
+            console.log('Send mail successfully')
         } catch (error) {
             console.log(error)
         }

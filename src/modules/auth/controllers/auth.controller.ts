@@ -1,5 +1,7 @@
+import { InjectQueue } from '@nestjs/bull'
 import { Body, Controller, HttpStatus, Post } from '@nestjs/common'
 import { Req, UseGuards } from '@nestjs/common/decorators'
+import { Queue } from 'bull'
 import { Request } from 'express'
 import { ResponseMessage } from '../../../common/decorator/response.decorator'
 import { CreateUserDto } from '../../../modules/user/dto/create-user.dto'
@@ -9,7 +11,7 @@ import {
     AUTH_LOGIN,
     AUTH_LOGOUT,
     AUTH_REFRESH,
-    AUTH_REGISTER,
+    AUTH_REGISTER
 } from '../auth.constants'
 import { ResponseAuth } from '../auth.interface'
 import { RefreshAuthDto } from '../dto/refresh-auth.dto'
@@ -21,13 +23,28 @@ import { AuthService } from '../services/auth.service'
 export class AuthController {
     constructor(
         private readonly authService: AuthService,
-        private readonly userService: UserService
+        private readonly userService: UserService,
+        @InjectQueue('send-mail') private mailQueue: Queue
     ) {}
 
     @ResponseMessage(AUTH_REGISTER)
     @Post('register')
-    register(@Body() userRegister: CreateUserDto): Promise<Partial<User>> {
-        return this.userService.register(userRegister)
+    async register(
+        @Body() userRegister: CreateUserDto
+    ): Promise<Partial<User>> {
+        const user = await this.userService.register(userRegister)
+        await this.mailQueue.add(
+            'register',
+            {
+                recipient: userRegister.username,
+                subject: 'Register',
+                content: 'Register successfully',
+            },
+            {
+                removeOnComplete: true,
+            }
+        )
+        return user
     }
 
     @UseGuards(JwtAuthGuard)

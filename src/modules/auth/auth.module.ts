@@ -7,6 +7,9 @@ import { AuthController } from './controllers/auth.controller'
 import { AuthService } from './services/auth.service'
 import { JwtStrategy } from './strategies/jwt.strategy'
 import { LocalStrategy } from './strategies/local.strategy'
+import {BullModule}  from '@nestjs/bull'
+import { SendMail } from './consumers/send-mail.consumer'
+import EmailService from '../email/services/email.service'
 
 @Module({
     imports: [
@@ -22,8 +25,11 @@ import { LocalStrategy } from './strategies/local.strategy'
                 },
             }),
         }),
+        BullModule.registerQueue({
+            name: 'send-mail'
+        }) 
     ],
     controllers: [AuthController],
-    providers: [AuthService, LocalStrategy, JwtStrategy],
+    providers: [AuthService, EmailService, LocalStrategy, JwtStrategy, SendMail],
 })
 export class AuthModule {}

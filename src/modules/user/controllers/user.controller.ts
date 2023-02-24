@@ -4,10 +4,14 @@ import { RolesGuard } from '../../../common/guards/roles.guard'
 import { JwtAuthGuard } from '../../../modules/auth/guards/jwt-auth/jwt-auth.guard'
 import { UserRole } from '../entities/user.entity'
 import { UserService } from '../services/user.service'
+import { InjectQueue } from '@nestjs/bull'
+import { Queue } from 'bull'
 
 @Controller('user')
 export class UserController {
-    constructor(private readonly userService: UserService) {}
+    constructor(
+        private readonly userService: UserService
+    ) {}
 
     @Roles(UserRole.CLIENT)
     @UseGuards(JwtAuthGuard, RolesGuard)
