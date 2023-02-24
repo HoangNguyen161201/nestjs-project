@@ -1,3 +1,4 @@
+import { OnModuleInit } from '@nestjs/common'
 import {
     ConnectedSocket,
     MessageBody,
@@ -5,9 +6,8 @@ import {
     OnGatewayDisconnect,
     SubscribeMessage,
     WebSocketGateway,
-    WebSocketServer,
+    WebSocketServer
 } from '@nestjs/websockets'
-import { OnModuleInit } from '@nestjs/common'
 import { Server, Socket } from 'socket.io'
 
 @WebSocketGateway()

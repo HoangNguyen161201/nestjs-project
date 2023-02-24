@@ -1,5 +1,4 @@
 import { IsString, Max, Min } from 'class-validator'
-import { Category } from '../../category/entities/category.entity'
 import {
     Column,
     CreateDateColumn,
@@ -8,6 +7,7 @@ import {
     PrimaryGeneratedColumn,
     UpdateDateColumn,
 } from 'typeorm'
+import { Category } from '../../category/entities/category.entity'
 
 @Entity()
 export class Product {

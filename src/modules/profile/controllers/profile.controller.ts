@@ -7,18 +7,18 @@ import {
     Post,
     Put,
     Req,
-    UseGuards,
+    UseGuards
 } from '@nestjs/common'
 import { Request } from 'express'
-import { ResponseMessage } from 'src/common/decorator/response.decorator'
-import { JwtAuthGuard } from 'src/modules/auth/guards/jwt-auth/jwt-auth.guard'
-import { User } from 'src/modules/user/entities/user.entity'
+import { ResponseMessage } from '../../../common/decorator/response.decorator'
+import { JwtAuthGuard } from '../../../modules/auth/guards/jwt-auth/jwt-auth.guard'
+import { User } from '../../../modules/user/entities/user.entity'
 import { CreateProfileDto } from '../dto/create-profile.dto'
 import { UpdateProfileDto } from '../dto/update-profile.dto'
 import {
     GET_PROFILE,
     PROFILE_CREATED,
-    PROFILE_UPDATED,
+    PROFILE_UPDATED
 } from '../profile.constants'
 import { ProfileService } from '../services/profile.service'
 

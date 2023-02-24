@@ -8,11 +8,11 @@ import {
     Put,
     UseGuards
 } from '@nestjs/common'
-import { ResponseMessage } from 'src/common/decorator/response.decorator'
-import { Roles } from 'src/common/decorator/roles.decorator'
-import { RolesGuard } from 'src/common/guards/roles.guard'
-import { JwtAuthGuard } from 'src/modules/auth/guards/jwt-auth/jwt-auth.guard'
-import { UserRole } from 'src/modules/user/entities/user.entity'
+import { ResponseMessage } from '../../../common/decorator/response.decorator'
+import { Roles } from '../../../common/decorator/roles.decorator'
+import { RolesGuard } from '../../../common/guards/roles.guard'
+import { JwtAuthGuard } from '../../../modules/auth/guards/jwt-auth/jwt-auth.guard'
+import { UserRole } from '../../../modules/user/entities/user.entity'
 import {
     CATEGORY_DELETED,
     CATEGORY_UPDATED,

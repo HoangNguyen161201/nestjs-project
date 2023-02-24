@@ -6,16 +6,21 @@ import {
     Param,
     Post,
     Put,
-    UseGuards,
+    UseGuards
 } from '@nestjs/common'
-import { ResponseMessage } from 'src/common/decorator/response.decorator'
-import { Roles } from 'src/common/decorator/roles.decorator'
-import { RolesGuard } from 'src/common/guards/roles.guard'
-import { JwtAuthGuard } from 'src/modules/auth/guards/jwt-auth/jwt-auth.guard'
-import { UserRole } from 'src/modules/user/entities/user.entity'
+import { ResponseMessage } from '../../../common/decorator/response.decorator'
+import { Roles } from '../../../common/decorator/roles.decorator'
+import { RolesGuard } from '../../../common/guards/roles.guard'
+import { JwtAuthGuard } from '../../../modules/auth/guards/jwt-auth/jwt-auth.guard'
+import { UserRole } from '../../../modules/user/entities/user.entity'
 import { CreateProductDto } from '../dto/create-product.dto'
 import { UpdateProductDto } from '../dto/update-product.dto'
-import { GET_PRODUCT, GET_PRODUCTS, PRODUCT_DELETED, PRODUCT_UPDATED } from '../product.constants'
+import {
+    GET_PRODUCT,
+    GET_PRODUCTS,
+    PRODUCT_DELETED,
+    PRODUCT_UPDATED
+} from '../product.constants'
 import { ProductService } from '../services/product.service'
 
 @Controller('product')
@@ -57,6 +62,6 @@ export class ProductController {
     @ResponseMessage(PRODUCT_DELETED)
     @Delete(':id')
     remove(@Param('id') id: number) {
-        return  this.productService.remove(id)
+        return this.productService.remove(id)
     }
 }

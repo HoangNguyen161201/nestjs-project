@@ -1,7 +1,7 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common'
 import { InjectRepository } from '@nestjs/typeorm'
-import { User } from 'src/modules/user/entities/user.entity'
-import { UserService } from 'src/modules/user/services/user.service'
+import { User } from '../../../modules/user/entities/user.entity'
+import { UserService } from '../../../modules/user/services/user.service'
 import { Repository } from 'typeorm'
 import { CreateProfileDto } from '../dto/create-profile.dto'
 import { UpdateProfileDto } from '../dto/update-profile.dto'
@@ -34,9 +34,9 @@ export class ProfileService {
     }
 
     async update(id: number, updateProfileDto: UpdateProfileDto) {
-        const profile = await this.profileRepository.findOneBy({id})
+        const profile = await this.profileRepository.findOneBy({ id })
         if (!profile)
             throw new HttpException('Profile not found', HttpStatus.NOT_FOUND)
-        return await this.profileRepository.update({id}, updateProfileDto)
+        return await this.profileRepository.update({ id }, updateProfileDto)
     }
 }

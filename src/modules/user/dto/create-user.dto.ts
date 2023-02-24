@@ -1,5 +1,5 @@
-import { IsNotEmpty, IsEmail, Length, Matches } from 'class-validator'
-import { MESSAGES, REGEX } from 'src/modules/auth/auth.constants'
+import { IsEmail, IsNotEmpty, Length, Matches } from 'class-validator'
+import { MESSAGES, REGEX } from '../../../modules/auth/auth.constants'
 
 export class CreateUserDto {
     @IsNotEmpty()

@@ -1,5 +1,5 @@
 interface RoomOptions {
-    roomId: string,
-    userName: string,
+    roomId: string
+    userName: string
     name: string
 }

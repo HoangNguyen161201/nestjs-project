@@ -1,10 +1,10 @@
 import { Body, Controller, HttpStatus, Post } from '@nestjs/common'
 import { Req, UseGuards } from '@nestjs/common/decorators'
 import { Request } from 'express'
-import { ResponseMessage } from 'src/common/decorator/response.decorator'
-import { CreateUserDto } from 'src/modules/user/dto/create-user.dto'
-import { User } from 'src/modules/user/entities/user.entity'
-import { UserService } from 'src/modules/user/services/user.service'
+import { ResponseMessage } from '../../../common/decorator/response.decorator'
+import { CreateUserDto } from '../../../modules/user/dto/create-user.dto'
+import { User } from '../../../modules/user/entities/user.entity'
+import { UserService } from '../../../modules/user/services/user.service'
 import {
     AUTH_LOGIN,
     AUTH_LOGOUT,

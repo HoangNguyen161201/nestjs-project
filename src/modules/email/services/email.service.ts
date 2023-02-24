@@ -24,10 +24,8 @@ export default class EmailService {
     }
 
     async sendMail(options: Mail.Options) {
-        console.log('send mail successfully', options)
         try {
             const accessToken = await this.oAuth2Client.getAccessToken()
-
             this.nodemailerTransport = createTransport({
                 service: 'gmail',
                 auth: {

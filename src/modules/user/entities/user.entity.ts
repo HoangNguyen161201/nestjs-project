@@ -1,15 +1,9 @@
-import { IsEmail, IsString } from 'class-validator'
-import { Profile } from '../../profile/entities/profile.entity'
-import {
-    Column,
-    Entity,
-    PrimaryGeneratedColumn,
-    CreateDateColumn,
-    UpdateDateColumn,
-    OneToOne,
-    JoinColumn,
-} from 'typeorm'
 import { Exclude } from 'class-transformer'
+import { IsEmail, IsString } from 'class-validator'
+import {
+    Column, CreateDateColumn, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn, UpdateDateColumn
+} from 'typeorm'
+import { Profile } from '../../profile/entities/profile.entity'
 
 export enum UserRole {
     ADMIN = 'admin',
@@ -41,12 +35,12 @@ export class User {
     role: UserRole
 
     @Column({
-        nullable: true
+        nullable: true,
     })
     refreshToken: string
 
-    @OneToOne(()=> Profile, profile => profile.id, {
-        cascade: true
+    @OneToOne(() => Profile, (profile) => profile.id, {
+        cascade: true,
     })
     @JoinColumn()
     profile: Profile
