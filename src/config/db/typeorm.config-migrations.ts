@@ -1,11 +1,11 @@
-import { DataSource } from 'typeorm'
 import { ConfigService } from '@nestjs/config'
 import { config } from 'dotenv'
+import { DataSource } from 'typeorm'
 
-import { User } from '../../modules/user/entities/user.entity'
-import { Profile } from '../../modules/profile/entities/profile.entity'
-import { Product } from '../../modules/product/entities/product.entity'
 import { Category } from '../../modules/category/entities/category.entity'
+import { Product } from '../../modules/product/entities/product.entity'
+import { Profile } from '../../modules/profile/entities/profile.entity'
+import { User } from '../../modules/user/entities/user.entity'
 
 import { createUser1676598300085 } from '../../database/migrations/1676598300085-create-user'
 import { createRefeshToken1676628412533 } from '../../database/migrations/1676628412533-create-refeshToken'
@@ -37,6 +37,6 @@ export default new DataSource({
         updateProfile1676793324994,
         createProduct1676817628207,
         createCategory1676818231155,
-        uniqueCategory1676819411259
+        uniqueCategory1676819411259,
     ],
 })

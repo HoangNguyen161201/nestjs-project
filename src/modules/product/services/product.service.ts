@@ -16,18 +16,14 @@ export class ProductService {
     ) {}
 
     async create(createProductDto: CreateProductDto) {
-        try {
-            const newProduct = this.productRepository.create(createProductDto)
-            if (createProductDto.categoryId) {
-                const category = await this.categoryService.findOne(
-                    createProductDto.categoryId
-                )
-                newProduct.category = category
-            }
-            return await this.productRepository.save(newProduct)
-        } catch (error) {
-            throw new HttpException(error.message, HttpStatus.BAD_REQUEST)
+        const newProduct = this.productRepository.create(createProductDto)
+        if (createProductDto.categoryId) {
+            const category = await this.categoryService.findOne(
+                createProductDto.categoryId
+            )
+            newProduct.category = category
         }
+        return await this.productRepository.save(newProduct)
     }
 
     findAll() {

@@ -1,13 +1,13 @@
 import { IsString, Max, Min } from 'class-validator'
-import { Product } from '../../product/entities/product.entity'
 import {
     Column,
     CreateDateColumn,
     Entity,
     OneToMany,
     PrimaryGeneratedColumn,
-    UpdateDateColumn,
+    UpdateDateColumn
 } from 'typeorm'
+import { Product } from '../../product/entities/product.entity'
 
 @Entity()
 export class Category {
@@ -20,7 +20,7 @@ export class Category {
     @Column({
         type: 'varchar',
         length: 100,
-        unique: true
+        unique: true,
     })
     name: string
 

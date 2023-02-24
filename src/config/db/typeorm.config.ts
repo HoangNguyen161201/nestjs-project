@@ -1,8 +1,9 @@
 import { ConfigModule, ConfigService } from '@nestjs/config'
 import {
-  TypeOrmModuleAsyncOptions,
-  TypeOrmModuleOptions
+    TypeOrmModuleAsyncOptions,
+    TypeOrmModuleOptions
 } from '@nestjs/typeorm'
+
 import { Category } from 'src/modules/category/entities/category.entity'
 import { Product } from 'src/modules/product/entities/product.entity'
 import { Profile } from 'src/modules/profile/entities/profile.entity'

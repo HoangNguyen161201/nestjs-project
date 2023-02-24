@@ -1,4 +1,4 @@
 export interface UserUpdateFilter {
     username?: string
-    id?: number   
+    id?: number
 }

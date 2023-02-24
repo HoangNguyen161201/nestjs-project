@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common'
 import { SchedulerRegistry } from '@nestjs/schedule'
 import { CronJob } from 'cron'
-import EmailScheduleDto from '../dto/emailSchedule.dto'
+import EmailDto from '../dto/email.dto'
 import EmailService from './email.service'
 
 @Injectable()
@@ -11,7 +11,7 @@ export default class EmailSchedulingService {
         private readonly schedulerRegistry: SchedulerRegistry
     ) {}
 
-    scheduleEmail(emailSchedule: EmailScheduleDto) {
+    scheduleEmail(emailSchedule: EmailDto) {
         const job = new CronJob(emailSchedule.date, () => {
             this.emailService.sendMail({
                 to: emailSchedule.recipient,

@@ -24,11 +24,14 @@ export class AuthService {
 
     async login(user: any) {
         const payload = user as User
-        const tokens = await this.createToken({
-            id: payload.id,
-            username: payload.username,
-            role: payload.role
-        }, true)
+        const tokens = await this.createToken(
+            {
+                id: payload.id,
+                username: payload.username,
+                role: payload.role,
+            },
+            true
+        )
         return {
             ...tokens,
         }
@@ -53,7 +56,7 @@ export class AuthService {
             const token = await this.createToken({
                 id: user.id,
                 username: user.username,
-                role: user.role
+                role: user.role,
             })
 
             return {

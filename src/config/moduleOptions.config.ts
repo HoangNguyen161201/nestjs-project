@@ -6,7 +6,7 @@ import jwtConfig from './jwt.config'
 import redisConfig from './queue/redist.config'
 
 const moduleOptions: ConfigModuleOptions = {
-    load: [databaseConfig, jwtConfig, emailConfig,redisConfig],
+    load: [databaseConfig, jwtConfig, emailConfig, redisConfig],
     isGlobal: true,
     cache: true,
     validationSchema: Joi.object({

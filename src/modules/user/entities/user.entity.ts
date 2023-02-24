@@ -1,7 +1,13 @@
 import { Exclude } from 'class-transformer'
 import { IsEmail, IsString } from 'class-validator'
 import {
-    Column, CreateDateColumn, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn, UpdateDateColumn
+    Column,
+    CreateDateColumn,
+    Entity,
+    JoinColumn,
+    OneToOne,
+    PrimaryGeneratedColumn,
+    UpdateDateColumn
 } from 'typeorm'
 import { Profile } from '../../profile/entities/profile.entity'
 

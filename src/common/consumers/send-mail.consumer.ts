@@ -1,5 +1,5 @@
 import { OnQueueActive, Process, Processor } from '@nestjs/bull'
-import EmailScheduleDto from 'src/modules/email/dto/emailSchedule.dto'
+import EmailDto from 'src/modules/email/dto/email.dto'
 import EmailService from 'src/modules/email/services/email.service'
 
 @Processor('send-mail')
@@ -12,7 +12,7 @@ export class SendMail {
 
     @Process('register')
     async registerMail(options) {
-        const data: EmailScheduleDto = options?.data
+        const data: EmailDto = options?.data
         await this.emailService.sendMail({ ...data, to: data.recipient })
     }
 }

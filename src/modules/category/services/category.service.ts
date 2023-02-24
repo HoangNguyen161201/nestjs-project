@@ -12,11 +12,7 @@ export class CategoryService {
         private categoryRepository: Repository<Category>
     ) {}
     async create(createCategoryDto: CreateCategoryDto) {
-        try {
-            return await this.categoryRepository.save({ ...createCategoryDto })
-        } catch (error) {
-            throw new HttpException(error.message, HttpStatus.BAD_REQUEST)
-        }
+        return await this.categoryRepository.save({ ...createCategoryDto })
     }
 
     findAll() {

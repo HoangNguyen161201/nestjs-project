@@ -6,7 +6,7 @@ import {
     Param,
     Post,
     Put,
-    UseGuards
+    UseGuards,
 } from '@nestjs/common'
 import { ResponseMessage } from '../../../common/decorator/response.decorator'
 import { Roles } from '../../../common/decorator/roles.decorator'
@@ -17,7 +17,7 @@ import {
     CATEGORY_DELETED,
     CATEGORY_UPDATED,
     GET_CATEGORIES,
-    GET_CATEGORY
+    GET_CATEGORY,
 } from '../category.constants'
 import { CreateCategoryDto } from '../dto/create-category.dto'
 import { UpdateCategoryDto } from '../dto/update-category.dto'

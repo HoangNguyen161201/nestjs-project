@@ -7,14 +7,14 @@ import { TypeOrmModule } from '@nestjs/typeorm'
 import { AppController } from './app.controller'
 import { AppService } from './app.service'
 import { TransformInterceptor } from './common/interceptors/transform/transform.interceptor'
-import { bullAsyncConfig } from './config/queue/bull.config'
-import moduleOptions from './config/moduleOptions.config'
 import { typeOrmAsyncConfig } from './config/db/typeorm.config'
+import moduleOptions from './config/moduleOptions.config'
+import { bullAsyncConfig } from './config/queue/bull.config'
+
 import { AuthModule } from './modules/auth/auth.module'
 import { CategoryModule } from './modules/category/category.module'
 import { EmailModule } from './modules/email/email.module'
 import { GatewayModule } from './modules/gateway/gateway.module'
-import { PostModule } from './modules/post/post.module'
 import { ProductModule } from './modules/product/product.module'
 import { ProfileModule } from './modules/profile/profile.module'
 import { UserModule } from './modules/user/user.module'
@@ -30,7 +30,6 @@ import { UserModule } from './modules/user/user.module'
         ProfileModule,
         CategoryModule,
         ProductModule,
-        PostModule,
         EmailModule,
         GatewayModule,
     ],

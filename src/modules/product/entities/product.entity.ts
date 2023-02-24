@@ -5,7 +5,7 @@ import {
     Entity,
     ManyToOne,
     PrimaryGeneratedColumn,
-    UpdateDateColumn,
+    UpdateDateColumn
 } from 'typeorm'
 import { Category } from '../../category/entities/category.entity'
 
